@@ -1,0 +1,4 @@
+{
+  "translate.connectFour.playerWins": "{{ player }} wins !",
+  "translate.connectFour.playerTurn": "{{ player }}'s turn"
+}

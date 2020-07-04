@@ -6,6 +6,8 @@ export type WinnerState = Players | null;
 
 export interface Cell {
   state: CellState;
+  row: number;
+  column: number;
 }
 
 export type GridCells = Cell[][];
@@ -20,4 +22,5 @@ export interface ConnectFourGame {
   grid: Grid;
   alignedCellsToWin: number;
   winner: WinnerState;
+  currentPlayer: Players;
 }

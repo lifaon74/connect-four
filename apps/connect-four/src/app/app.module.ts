@@ -5,6 +5,7 @@ import { ConnectFourComponent } from './components/connect-four/connect-four.com
 import { ConnectFourGameState } from './components/connect-four/+state/connect-four.state';
 import { NgxsModule } from '@ngxs/store';
 import { environment } from '../environments/environment';
+import { LocalizationModule } from '@app/ngx-localization';
 
 const COMPONENTS = [
   ConnectFourComponent,
@@ -26,7 +27,8 @@ const STATES = [
     BrowserModule,
     NgxsModule.forRoot(STATES, {
       developmentMode: !environment.production
-    })
+    }),
+    LocalizationModule.forRoot(),
   ],
   providers: [],
   bootstrap: [AppComponent]

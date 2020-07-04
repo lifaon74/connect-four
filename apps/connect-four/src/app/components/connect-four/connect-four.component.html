@@ -1,17 +1,39 @@
-<div class="connect-four-grid">
-  <div
-    class="connect-four-row"
-    *ngFor="let rowCells of (cells$ | async); index as row"
-  >
+
+<div
+  class="connect-four-container"
+  [class.current-player1]="(currentPlayer$ | async) === 'player1'"
+  [class.current-player2]="(currentPlayer$ | async) === 'player2'"
+  [class.has-winner]="(hasWinner$ | async)"
+>
+  <div class="message">
     <div
-      class="connect-four-cell"
-      *ngFor="let cell of rowCells; index as column"
-      [class.cell--state--empty]="cell.state === 'empty'"
-      [class.cell--state--player1]="cell.state === 'player1'"
-      [class.cell--state--player2]="cell.state === 'player2'"
-      (click)="onClickCell(row, column)"
+      class="player-turn-message"
+      *ngIf="!(hasWinner$ | async)"
     >
-      <div class="grid-overlay"></div>
+      {{ 'translate.connectFour.playerTurn' | translate: { player: (currentPlayer$ | async) } }}
+    </div>
+    <div class="win-message" *ngIf="(hasWinner$ | async)">
+      {{ 'translate.connectFour.playerWins' | translate: { player: (winner$ | async) } }}
+    </div>
+  </div>
+
+  <div class="connect-four-grid">
+    <div
+      class="connect-four-row"
+      *ngFor="let rowCells of (cells$ | async); trackBy: trackByRow"
+    >
+      <div
+        class="connect-four-cell"
+        *ngFor="let cell of rowCells; trackBy: trackByCell"
+        [class.cell--state--empty]="cell.state === null"
+        [class.cell--state--player1]="cell.state === 'player1'"
+        [class.cell--state--player2]="cell.state === 'player2'"
+        (click)="onClickCell(cell)"
+      >
+        <div class="grid-overlay"></div>
+      </div>
     </div>
   </div>
 </div>
+
+

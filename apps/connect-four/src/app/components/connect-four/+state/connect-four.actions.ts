@@ -1,15 +1,18 @@
-import { CellState } from './connect-four.models';
+import { CellState, Players } from './connect-four.models';
 
 
-export class ChangeCellStateAction {
-  static readonly type = '[Cell] Change state';
+export class PlayerInsertCoinAction {
+  static readonly type = '[Player] Insert coin';
 
   constructor(
-    public row: number,
     public column: number,
-    public state: CellState,
   ) {
   }
 }
 
+export class ResetGameAction {
+  static readonly type = '[Game] Reset';
 
+  constructor() {
+  }
+}
