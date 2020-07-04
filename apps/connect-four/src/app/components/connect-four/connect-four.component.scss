@@ -1,0 +1,88 @@
+@import '../../../scss/variables/variables';
+
+:host {
+  font-size: 0;
+
+  & > .connect-four-grid {
+    width: min(100vw, 100vh);
+    margin: 0 auto;
+    overflow: hidden;
+
+    & > .connect-four-row {
+      & > .connect-four-cell {
+        $grid-size: (1 / $grid-columns * 100%);
+
+        display: inline-block; // let's go with display: inline-block instead of display grid or flex for better IE support
+        position: relative;
+        width: $grid-size;
+        padding-bottom: $grid-size;
+        //border: 1px solid red;
+        //background: green;
+
+        &::before { // coin
+          content: '';
+          display: block;
+          position: absolute;
+
+          top: 50%;
+          left: 50%;
+          width: $connect-four-grid-coin-size;
+          height: $connect-four-grid-coin-size;
+          margin-top: -($connect-four-grid-coin-size / 2);
+          margin-left: -($connect-four-grid-coin-size / 2);
+          border-radius: 50%;
+          // background-color: black;
+        }
+
+        & > .grid-overlay {
+          position: absolute;
+          top: 0;
+          left: 0;
+          width: 100%;
+          height: 100%;
+          overflow: hidden;
+
+          &::before {
+            content: '';
+            display: block;
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            width: $connect-four-grid-hole-size;
+            height: $connect-four-grid-hole-size;
+            margin-top: -($connect-four-grid-hole-size / 2);
+            margin-left: -($connect-four-grid-hole-size / 2);
+            border-radius: 50%;
+            box-shadow: 0 0 0 1000px $connect-four-grid-color;
+          }
+        }
+
+        &.cell--state--player1 {
+          &::before { // coin
+            background-color: $connect-four-coin-player1-color;
+          }
+        }
+
+        &.cell--state--player2 {
+          &::before { // coin
+            background-color: $connect-four-coin-player2-color;
+          }
+        }
+
+        &.cell--state--empty {
+          cursor: pointer;
+
+          &::before { // coin
+            transition: background-color 150ms;
+          }
+
+          &:hover {
+            &::before { // coin
+              background-color: $connect-four-coin-empty-color;
+            }
+          }
+        }
+      }
+    }
+  }
+}

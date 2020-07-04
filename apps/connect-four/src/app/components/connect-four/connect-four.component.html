@@ -1,0 +1,17 @@
+<div class="connect-four-grid">
+  <div
+    class="connect-four-row"
+    *ngFor="let rowCells of (cells$ | async); index as row"
+  >
+    <div
+      class="connect-four-cell"
+      *ngFor="let cell of rowCells; index as column"
+      [class.cell--state--empty]="cell.state === 'empty'"
+      [class.cell--state--player1]="cell.state === 'player1'"
+      [class.cell--state--player2]="cell.state === 'player2'"
+      (click)="onClickCell(row, column)"
+    >
+      <div class="grid-overlay"></div>
+    </div>
+  </div>
+</div>

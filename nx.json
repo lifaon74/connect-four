@@ -1,0 +1,22 @@
+{
+  "npmScope": "app",
+  "implicitDependencies": {
+    "angular.json": "*",
+    "package.json": {
+      "dependencies": "*",
+      "devDependencies": "*"
+    },
+    "tsconfig.json": "*",
+    "tslint.json": "*",
+    "nx.json": "*"
+  },
+  "projects": {
+    "connect-four": {
+      "tags": []
+    },
+    "connect-four-e2e": {
+      "tags": [],
+      "implicitDependencies": ["connect-four"]
+    }
+  }
+}

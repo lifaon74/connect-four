@@ -1,0 +1,49 @@
+
+@mixin scrollbar-mixin(
+  $scroll-width: 6px,
+  $scroll-background: #fff,
+  $scroll-color: #000
+) {
+
+  -webkit-overflow-scrolling: auto;
+
+  &::-webkit-scrollbar {
+    width: $scroll-width;
+    height: $scroll-width;
+  }
+
+  &::-webkit-scrollbar-track {
+    background: $scroll-background;
+  }
+
+  &::-webkit-scrollbar-thumb {
+    background: $scroll-color;
+    width: $scroll-width;
+    height: $scroll-width;
+  }
+}
+
+
+@mixin background-image-mixin($url, $size: contain, $position: center) {
+  background-image: url($url);
+  background-size: $size;
+  background-position: $position;
+  background-repeat: no-repeat;
+}
+
+@mixin not-mixin($ignore-list...) {
+  @if (length($ignore-list) == 1) {
+    $ignore-list: nth($ignore-list, 1);
+  }
+
+  $not-output: '';
+
+  @each $not in $ignore-list {
+    $not-output: $not-output + ':not(#{$not})';
+  }
+
+  &#{$not-output} {
+    @content;
+  }
+}
+

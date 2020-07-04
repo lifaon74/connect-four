@@ -1,0 +1,28 @@
+@import 'colors';
+@import 'mixins';
+
+$sqrt2: 1.41421356;
+//$assets-path: '/assets';
+//$images-path: $assets-path + '/images';
+
+// sizes
+$size-xs: 768px;
+$size-sm: 1024px; // 992
+$size-md: 1200px;
+$size-lg: 1600px;
+$size-xlg: 1920px;
+
+$main-background-color: #fff;
+
+
+// connect-four specific
+
+$grid-rows: 6;
+$grid-columns: 7;
+$connect-four-grid-color: $color-blue-1;
+$connect-four-grid-hole-size: 80%;
+$connect-four-grid-coin-size: 60%;
+
+$connect-four-coin-player1-color: $color-red-1;
+$connect-four-coin-player2-color: $color-yellow-1;
+$connect-four-coin-empty-color: $color-gray-1;
