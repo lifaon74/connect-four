@@ -59,6 +59,10 @@ body {
   -moz-osx-font-smoothing: grayscale;
 
   overflow: auto;
+
+  @media (prefers-color-scheme: dark) {
+    background-color: $color-dark-1;
+  }
 }
 
 [contenteditable] {
