@@ -6,9 +6,13 @@ import { ConnectFourGameState } from './components/connect-four/+state/connect-f
 import { NgxsModule } from '@ngxs/store';
 import { environment } from '../environments/environment';
 import { LocalizationModule } from '@app/ngx-localization';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { MatButtonModule } from '@angular/material/button';
+import { MatToolbarModule } from '@angular/material/toolbar';
+
 
 const COMPONENTS = [
-  ConnectFourComponent,
+  ConnectFourComponent
 ];
 
 const STATES = [
@@ -16,6 +20,10 @@ const STATES = [
 ];
 
 
+const MATERIAL_MODULES = [
+  MatButtonModule,
+  MatToolbarModule
+];
 
 
 @NgModule({
@@ -29,8 +37,11 @@ const STATES = [
       developmentMode: !environment.production
     }),
     LocalizationModule.forRoot(),
+    BrowserAnimationsModule,
+    ...MATERIAL_MODULES
   ],
   providers: [],
   bootstrap: [AppComponent]
 })
-export class AppModule {}
+export class AppModule {
+}

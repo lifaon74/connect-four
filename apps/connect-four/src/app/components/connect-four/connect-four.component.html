@@ -3,17 +3,23 @@
   class="connect-four-container"
   [class.current-player1]="(currentPlayer$ | async) === 'player1'"
   [class.current-player2]="(currentPlayer$ | async) === 'player2'"
-  [class.has-winner]="(hasWinner$ | async)"
+  [class.is-draw]="(winner$ | async) === 'draw'"
+  [class.is-finished]="(isFinished$ | async)"
 >
   <div class="message">
     <div
       class="player-turn-message"
-      *ngIf="!(hasWinner$ | async)"
+      *ngIf="!(isFinished$ | async)"
     >
       {{ 'translate.connectFour.playerTurn' | translate: { player: (currentPlayer$ | async) } }}
     </div>
-    <div class="win-message" *ngIf="(hasWinner$ | async)">
-      {{ 'translate.connectFour.playerWins' | translate: { player: (winner$ | async) } }}
+    <div class="win-message" *ngIf="(isFinished$ | async)">
+      <span *ngIf="(winner$ | async) !== 'draw'">
+        {{ 'translate.connectFour.playerWins' | translate: { player: (winner$ | async) } }}
+      </span>
+      <span *ngIf="(winner$ | async) === 'draw'">
+        {{ 'translate.connectFour.draw' | translate }}
+      </span>
     </div>
   </div>
 
@@ -34,6 +40,14 @@
       </div>
     </div>
   </div>
+</div>
+
+<div class="buttons-container">
+  <button
+    mat-raised-button
+    color="primary"
+    (click)="onClickResetGame()"
+  > {{ 'translate.connectFour.newGame' | translate }}</button>
 </div>
 
 

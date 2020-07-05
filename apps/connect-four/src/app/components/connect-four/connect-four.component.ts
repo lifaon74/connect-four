@@ -4,7 +4,6 @@ import { Observable } from 'rxjs';
 import { ConnectFourGameState } from './+state/connect-four.state';
 import { Cell, ConnectFourGame, Grid, GridCells, Players, WinnerState } from './+state/connect-four.models';
 import { PlayerInsertCoinAction, ResetGameAction } from './+state/connect-four.actions';
-import { LocalizationService } from '@app/ngx-localization';
 
 @Component({
   selector: 'app-connect-four',
@@ -19,7 +18,7 @@ export class ConnectFourComponent implements OnInit {
   @Select(ConnectFourGameState.cells) cells$: Observable<GridCells>;
 
   @Select(ConnectFourGameState.currentPlayer) currentPlayer$: Observable<Players>;
-  @Select(ConnectFourGameState.hasWinner) hasWinner$: Observable<boolean>;
+  @Select(ConnectFourGameState.isFinished) isFinished$: Observable<boolean>;
   @Select(ConnectFourGameState.winner) winner$: Observable<WinnerState>;
 
   constructor(
@@ -50,4 +49,5 @@ export class ConnectFourComponent implements OnInit {
     return `${ cell.row }x${ cell.column }`;
   }
 
+  // TODO null match
 }

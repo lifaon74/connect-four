@@ -23,7 +23,7 @@ export class ConnectFourGameState {
   }
 
   @Selector()
-  static hasWinner(state: ConnectFourGame): boolean {
+  static isFinished(state: ConnectFourGame): boolean {
     return state.winner !== null;
   }
 

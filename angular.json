@@ -25,7 +25,10 @@
               "apps/connect-four/src/favicon.ico",
               "apps/connect-four/src/assets"
             ],
-            "styles": ["apps/connect-four/src/styles.scss"],
+            "styles": [
+              "./node_modules/@angular/material/prebuilt-themes/indigo-pink.css",
+              "apps/connect-four/src/styles.scss"
+            ],
             "scripts": []
           },
           "configurations": {
@@ -83,7 +86,10 @@
               "apps/connect-four/tsconfig.app.json",
               "apps/connect-four/tsconfig.spec.json"
             ],
-            "exclude": ["**/node_modules/**", "!apps/connect-four/**"]
+            "exclude": [
+              "**/node_modules/**",
+              "!apps/connect-four/**"
+            ]
           }
         },
         "test": {
@@ -118,8 +124,13 @@
         "lint": {
           "builder": "@angular-devkit/build-angular:tslint",
           "options": {
-            "tsConfig": ["apps/connect-four-e2e/tsconfig.e2e.json"],
-            "exclude": ["**/node_modules/**", "!apps/connect-four-e2e/**"]
+            "tsConfig": [
+              "apps/connect-four-e2e/tsconfig.e2e.json"
+            ],
+            "exclude": [
+              "**/node_modules/**",
+              "!apps/connect-four-e2e/**"
+            ]
           }
         }
       }

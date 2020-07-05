@@ -1,4 +1,7 @@
 {
+  "translate.connectFour.title": "Connect four demo",
   "translate.connectFour.playerWins": "{{ player }} wins !",
-  "translate.connectFour.playerTurn": "{{ player }}'s turn"
+  "translate.connectFour.draw": "Draw !",
+  "translate.connectFour.playerTurn": "{{ player }}'s turn",
+  "translate.connectFour.newGame": "Start a new game"
 }

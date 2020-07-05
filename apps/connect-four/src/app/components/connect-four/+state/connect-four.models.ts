@@ -1,7 +1,7 @@
 
 export type Players = 'player1' | 'player2';
 export type CellState = Players | null;
-export type WinnerState = Players | null;
+export type WinnerState = Players | null | 'draw';
 
 
 export interface Cell {

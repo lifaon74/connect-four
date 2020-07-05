@@ -163,7 +163,7 @@ export function getGridWinner(grid: Grid, alignedCellsToWin: number): WinnerStat
 
         // top right to bottom left
         if (
-          ((column - 3) < grid.columns)
+          ((column - 3) >= 0)
           && ((row + 3) < grid.rows)
         ) {
           let aligned = 1;
@@ -179,6 +179,23 @@ export function getGridWinner(grid: Grid, alignedCellsToWin: number): WinnerStat
       }
     }
   }
-  return null;
+
+  return isGridFull(grid)
+    ? 'draw'
+    : null;
+}
+
+/**
+ * Returns true if the grid has no more empty cells
+ */
+export function isGridFull(grid: Grid): boolean {
+  for (let row = 0; row < grid.rows; row++) {
+    for (let column = 0; column < grid.columns; column++) {
+      if (grid.cells[row][column].state === null) {
+        return false;
+      }
+    }
+  }
+  return true;
 }
 
