@@ -1,10 +1,55 @@
 import { TestBed, async } from '@angular/core/testing';
 import { AppComponent } from './app.component';
+import { BrowserModule } from '@angular/platform-browser';
+import { NgxsModule } from '@ngxs/store';
+import { environment } from '../environments/environment';
+import { LocalizationModule } from '@app/ngx-localization';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { WinPopupComponent } from './components/popups/win-popup/win-popup.component';
+import { ConnectFourComponent } from './components/connect-four/connect-four.component';
+import { ConnectFourGameState } from './components/connect-four/+state/connect-four.state';
+import { MatButtonModule } from '@angular/material/button';
+import { MatToolbarModule } from '@angular/material/toolbar';
+import { MatDialogModule } from '@angular/material/dialog';
+
+const POPUPS = [
+  WinPopupComponent
+];
+
+const COMPONENTS = [
+  ConnectFourComponent,
+  ...POPUPS
+];
+
+const STATES = [
+  ConnectFourGameState
+];
+
+
+const MATERIAL_MODULES = [
+  MatButtonModule,
+  MatToolbarModule,
+  MatDialogModule
+];
+
 
 describe('AppComponent', () => {
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [AppComponent]
+      imports: [
+        BrowserModule,
+        NgxsModule.forRoot(STATES, {
+          developmentMode: !environment.production
+        }),
+        LocalizationModule.forRoot(),
+        BrowserAnimationsModule,
+        ...MATERIAL_MODULES
+      ],
+      declarations: [
+        AppComponent,
+        ...COMPONENTS,
+      ],
+      providers: [],
     }).compileComponents();
   }));
 
@@ -12,20 +57,5 @@ describe('AppComponent', () => {
     const fixture = TestBed.createComponent(AppComponent);
     const app = fixture.componentInstance;
     expect(app).toBeTruthy();
-  });
-
-  it(`should have as title 'connect-four'`, () => {
-    const fixture = TestBed.createComponent(AppComponent);
-    const app = fixture.componentInstance;
-    expect(app.title).toEqual('connect-four');
-  });
-
-  it('should render title', () => {
-    const fixture = TestBed.createComponent(AppComponent);
-    fixture.detectChanges();
-    const compiled = fixture.nativeElement;
-    expect(compiled.querySelector('h1').textContent).toContain(
-      'Welcome to connect-four!'
-    );
   });
 });

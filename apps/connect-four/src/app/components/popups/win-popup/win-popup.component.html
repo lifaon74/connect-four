@@ -1,0 +1,18 @@
+<div class="win-message">
+  <span *ngIf="winner !== 'draw'">
+    {{ 'translate.connectFour.playerWins' | translate: { player: winner } }}
+  </span>
+  <span *ngIf="winner === 'draw'">
+    {{ 'translate.connectFour.draw' | translate }}
+  </span>
+</div>
+
+<div class="buttons-container">
+  <button
+    mat-raised-button
+    color="primary"
+    (click)="onClickCloseButton()"
+  >
+    {{ 'translate.connectFour.winPopup.button.close' | translate }}
+  </button>
+</div>

@@ -9,10 +9,16 @@ import { LocalizationModule } from '@app/ngx-localization';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MatButtonModule } from '@angular/material/button';
 import { MatToolbarModule } from '@angular/material/toolbar';
+import { WinPopupComponent } from './components/popups/win-popup/win-popup.component';
+import { MatDialogModule } from '@angular/material/dialog';
 
+const POPUPS = [
+  WinPopupComponent
+];
 
 const COMPONENTS = [
-  ConnectFourComponent
+  ConnectFourComponent,
+  ...POPUPS
 ];
 
 const STATES = [
@@ -22,15 +28,12 @@ const STATES = [
 
 const MATERIAL_MODULES = [
   MatButtonModule,
-  MatToolbarModule
+  MatToolbarModule,
+  MatDialogModule
 ];
 
 
 @NgModule({
-  declarations: [
-    AppComponent,
-    ...COMPONENTS
-  ],
   imports: [
     BrowserModule,
     NgxsModule.forRoot(STATES, {
@@ -39,6 +42,13 @@ const MATERIAL_MODULES = [
     LocalizationModule.forRoot(),
     BrowserAnimationsModule,
     ...MATERIAL_MODULES
+  ],
+  declarations: [
+    AppComponent,
+    ...COMPONENTS,
+  ],
+  entryComponents: [
+    ...POPUPS
   ],
   providers: [],
   bootstrap: [AppComponent]

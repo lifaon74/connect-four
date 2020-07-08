@@ -7,7 +7,7 @@ export function createEmptyCell(row: number, column: number): Cell {
   return {
     state: null,
     row,
-    column,
+    column
   };
 }
 
@@ -64,7 +64,7 @@ export function changeConnectFourGameCellState(
   connectFour: ConnectFourGame,
   row: number,
   column: number,
-  state: CellState,
+  state: CellState
 ): ConnectFourGame {
   const grid = changeGridCellState(connectFour.grid, row, column, state);
   const currentPlayer = (connectFour.currentPlayer === 'player1')
@@ -77,7 +77,6 @@ export function changeConnectFourGameCellState(
     winner: getGridWinner(grid, connectFour.alignedCellsToWin)
   };
 }
-
 
 
 /** READ **/

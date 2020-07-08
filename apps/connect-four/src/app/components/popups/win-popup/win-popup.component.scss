@@ -1,0 +1,15 @@
+@import '../../../../scss/variables/variables';
+
+:host {
+  & > .win-message {
+    font-size: 28px;
+    text-align: center;
+    padding: 25px 0;
+    line-height: 32px;
+    color: $color-dark-1;
+  }
+
+  & > .buttons-container {
+    text-align: center;
+  }
+}

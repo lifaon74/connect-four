@@ -1,4 +1,3 @@
-
 <div
   class="connect-four-container"
   [class.current-player1]="(currentPlayer$ | async) === 'player1'"
@@ -9,7 +8,7 @@
   <div class="message">
     <div
       class="player-turn-message"
-      *ngIf="!(isFinished$ | async)"
+      *ngIf="(isFinished$ | async) === false"
     >
       {{ 'translate.connectFour.playerTurn' | translate: { player: (currentPlayer$ | async) } }}
     </div>
@@ -47,7 +46,9 @@
     mat-raised-button
     color="primary"
     (click)="onClickResetGame()"
-  > {{ 'translate.connectFour.newGame' | translate }}</button>
+  >
+    {{ 'translate.connectFour.newGame' | translate }}
+  </button>
 </div>
 
 

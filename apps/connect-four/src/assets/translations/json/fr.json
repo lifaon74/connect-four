@@ -1,0 +1,8 @@
+{
+  "translate.connectFour.title": "Puissance 4 demo",
+  "translate.connectFour.playerWins": "{{ player }} gagne !",
+  "translate.connectFour.draw": "Egalité !",
+  "translate.connectFour.playerTurn": "Tour de {{ player }}",
+  "translate.connectFour.newGame": "Nouvelle partie",
+  "translate.connectFour.winPopup.button.close": "Fermer"
+}

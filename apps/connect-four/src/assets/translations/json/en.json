@@ -3,5 +3,6 @@
   "translate.connectFour.playerWins": "{{ player }} wins !",
   "translate.connectFour.draw": "Draw !",
   "translate.connectFour.playerTurn": "{{ player }}'s turn",
-  "translate.connectFour.newGame": "Start a new game"
+  "translate.connectFour.newGame": "Start a new game",
+  "translate.connectFour.winPopup.button.close": "Close"
 }

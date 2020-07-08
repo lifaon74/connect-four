@@ -23,6 +23,7 @@
     }
 
     & > .connect-four-grid {
+      width: 90%; // ie fallback
       width: min(90vw, 85vh);
       margin: 0 auto;
       overflow: hidden;

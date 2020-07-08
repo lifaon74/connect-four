@@ -2,9 +2,14 @@ import { Component, OnInit } from '@angular/core';
 import { Select, Store } from '@ngxs/store';
 import { Observable } from 'rxjs';
 import { ConnectFourGameState } from './+state/connect-four.state';
-import { Cell, ConnectFourGame, Grid, GridCells, Players, WinnerState } from './+state/connect-four.models';
+import { Cell, FinishedState, GridCells, Players, WinnerState } from './+state/connect-four.models';
 import { PlayerInsertCoinAction, ResetGameAction } from './+state/connect-four.actions';
+import { MatDialog } from '@angular/material/dialog';
+import { WinPopupComponent } from '../popups/win-popup/win-popup.component';
 
+/**
+ * Main component used to play a "connect-four" game
+ */
 @Component({
   selector: 'app-connect-four',
   templateUrl: './connect-four.component.html',
@@ -12,8 +17,8 @@ import { PlayerInsertCoinAction, ResetGameAction } from './+state/connect-four.a
 })
 export class ConnectFourComponent implements OnInit {
 
-  // TODO DEBUG
-  @Select(ConnectFourGameState) connectFourGame$: Observable<ConnectFourGame>;
+  // DEBUG
+  // @Select(ConnectFourGameState) connectFourGame$: Observable<ConnectFourGame>;
 
   @Select(ConnectFourGameState.cells) cells$: Observable<GridCells>;
 
@@ -22,15 +27,17 @@ export class ConnectFourComponent implements OnInit {
   @Select(ConnectFourGameState.winner) winner$: Observable<WinnerState>;
 
   constructor(
-    private store: Store,
+    private dialog: MatDialog,
+    private store: Store
   ) {
-    // TODO DEBUG
-    this.connectFourGame$.subscribe((...args: any[]) => {
-      console.log(args);
-    });
+    // DEBUG
+    // this.connectFourGame$.subscribe((...args: any[]) => {
+    //   console.log(args);
+    // });
   }
 
   ngOnInit(): void {
+    this.subscribeToWinner();
   }
 
   onClickCell(cell: Cell): void {
@@ -49,5 +56,19 @@ export class ConnectFourComponent implements OnInit {
     return `${ cell.row }x${ cell.column }`;
   }
 
-  // TODO null match
+  private subscribeToWinner(): void {
+    this.winner$.subscribe((winner: WinnerState) => {
+      if (winner !== null) {
+        this.openWinPopup(winner);
+      }
+    });
+  }
+
+  private openWinPopup(winner: FinishedState) {
+    return this.dialog.open(WinPopupComponent, {
+      data: {
+        winner
+      }
+    });
+  }
 }
